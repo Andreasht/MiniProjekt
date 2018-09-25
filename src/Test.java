@@ -6,7 +6,7 @@ public class Test {
 		boolean isNoob;
 		if(adrian.equals("noob")) {
 			isNoob = true;
-			System.out.println(isNoob);
+			System.out.println(isNoob + "fgt");
 		}
 	}
 }
