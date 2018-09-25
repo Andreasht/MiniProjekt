@@ -10,10 +10,10 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 
 public class FileScanner {
-	public static String readFromFile() {
+	public static String readFromFile(String f) {
 		String file = "";
 		try {
-			InputStream is = new FileInputStream("src/UglyDuckling.txt");
+			InputStream is = new FileInputStream("src/"+f+".txt");
 			int BUFFER_SIZE = 10000;
 			BufferedReader br = new BufferedReader(new InputStreamReader(is,"UTF-8"),BUFFER_SIZE);
 			String str;
@@ -27,10 +27,10 @@ public class FileScanner {
 		return file;
 	}
 
-	public static void writeToFile(String s) {
+	public static void writeToFile(String s, String f) {
 
 		try {
-			Writer writer = new OutputStreamWriter(new FileOutputStream("TheEnhancedUglyDuckling.txt"), "UTF-16");
+			Writer writer = new OutputStreamWriter(new FileOutputStream("TheEnhanced"+f), "UTF-16");
 			BufferedWriter fout = new BufferedWriter(writer);
 			fout.write(s);
 			fout.newLine();
@@ -42,9 +42,9 @@ public class FileScanner {
 
 	public static void main(String[] args) {
 
-		String str = readFromFile();
+		/*String str = readFromFile();
 		System.out.println(str);
-		writeToFile(str);
+		writeToFile(str);*/
 
 	}
 }
