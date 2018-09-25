@@ -30,7 +30,7 @@ public class FileScanner {
 	public static void writeToFile(String s, String f) {
 
 		try {
-			Writer writer = new OutputStreamWriter(new FileOutputStream("TheEnhanced"+f), "UTF-16");
+			Writer writer = new OutputStreamWriter(new FileOutputStream("TheEnhanced"+f), "UTF-8");
 			BufferedWriter fout = new BufferedWriter(writer);
 			fout.write(s);
 			fout.newLine();
