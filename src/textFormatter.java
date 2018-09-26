@@ -1,33 +1,37 @@
+import java.io.*;
+import java.util.regex.Pattern;
+@SuppressWarnings("unused")
 
 public class textFormatter {
 
 	public static void format(String input) {
-		
-		
-		/* String out = "";
-	    for(int i = 0; i < input.length(); i++) {
-	    	out += input.charAt(i);
-	    	if (input.charAt(i) == '.') {
-	        out += '\n';
-	      }
-	    } */
-	
-		String[] arr = input.split("\n");
+		//first, this part will split up the read file by every "."
+		//then it will add a line switch where it finds it.
 		String out = "";
+		String[] arr = input.split("(?<=\\.)");
 		for(String s : arr) {
-			StringBuilder b = new StringBuilder(s);
-			if (s.length() > 20) {
-				 b.insert(19, '\n');
+			if(s.charAt(0) == ' ') {
+				s = s.substring(1)+"\n";
 			}
-			out += b.toString();
-		} 
+			out += s + "\n";
+		}
 		
-		FileScanner.writeToFile(out,"UglyDuckling.rtf");
-	}
+		//this part ensures that a space will be input every time to quotation marks are next to eachother
+		StringBuilder b = new StringBuilder(out);
+		for(int i = out.length()-1; i>=0; i--) {
+			if ((out.charAt(i) == '\"') && (out.charAt(i+1) == '\"')) {
+				b.insert(i+1, " ");
+			}
+		}
+		String fout = b.toString();
+		FileScanner.writeToFile(fout,"UglyDuckling.rtf"); 
+		
+	} 
 	
 	public static void main(String[] args) {
 		new FileScanner();
 		String input = FileScanner.readFromFile("UglyDuckling");
 		format(input);
+		
 	}
 }
