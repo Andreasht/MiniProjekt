@@ -16,7 +16,7 @@ public class textFormatter {
 			out += s + "\n";
 		}
 		
-		//this part ensures that a space will be input every time to quotation marks are next to eachother
+		//this part ensures that a space will be input every time to quotation marks are next to each other
 		StringBuilder b = new StringBuilder(out);
 		for(int i = out.length()-1; i>=0; i--) {
 			if ((out.charAt(i) == '\"') && (out.charAt(i+1) == '\"')) {
