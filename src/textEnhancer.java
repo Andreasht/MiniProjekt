@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.regex.Pattern;
 @SuppressWarnings("unused")
 
-public class textFormatter {
+public class textEnhancer {
 
 	public static String format(String input) {
 																					//first, this part will split up the read file by every "."
@@ -22,12 +22,33 @@ public class textFormatter {
 				b.insert(i+1, " ");													//use stringbuilder to insert a space
 			}
 		}
-		return b.toString();														//return the strinbuilder as a string value																	
+		String form = b.toString();
+		String fout = replace(form);
+		return fout;																													
 	} 
+	
+	public static String replace(String input) {
+		String out = "";
+		String[] r = {"hella","skrt","braat","blyat","maymay","xdddd"};
+		String[] arr = input.split(" ");
+		
+		for(String s : arr) {
+			int i = (int) (Math.random()*r.length);
+			if(s.equals("\\bmeget\\b")) {
+				s = r[i];
+			}
+			out += s + " "; 
+		}
+		System.out.println(out);
+		return out;
+	}
 	
 	public static void main(String[] args) {												
 		String input = FileScanner.readFromFile("UglyDuckling");					//set the filescanner.readfromfile method return value as the string input
-		String es = format(input);													//set a string as return value of the formatted input
-		FileScanner.writeToFile(es,"UglyDuckling.rtf"); 							//write the enhanced string to a file
+		String f = format(input);													//set a string as return value of the formatted input
+	//	System.out.println(f);
+	//	String en = replace(f);
+	//	FileScanner.writeToFile(f,"UglyDuckling.rtf"); 							//write the enhanced string to a file
 	}
 }
+
