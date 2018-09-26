@@ -16,7 +16,11 @@ public class textFormatter {
 			out += s + "\n";
 		}
 		
+<<<<<<< HEAD
 		//this part ensures that a space will be input every time to quotation marks are next to each other
+=======
+		//this part ensures that a space will be input every time two quotation marks are next to eachother
+>>>>>>> 45556a215444ca670e8550bdb884176fd1c511a2
 		StringBuilder b = new StringBuilder(out);
 		for(int i = out.length()-1; i>=0; i--) {
 			if ((out.charAt(i) == '\"') && (out.charAt(i+1) == '\"')) {
