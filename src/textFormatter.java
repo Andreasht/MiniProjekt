@@ -8,7 +8,7 @@ public class textFormatter {
 		//first, this part will split up the read file by every "."
 		//then it will add a line switch where it finds it.
 		String out = "";
-		String[] arr = input.split("(?<=\\.)");
+		String[] arr = input.split("(?<=[.])");
 		for(String s : arr) {
 			if(s.charAt(0) == ' ') {
 				s = s.substring(1)+"\n";
@@ -25,7 +25,8 @@ public class textFormatter {
 			}
 		}
 		String fout = b.toString();
-		FileScanner.writeToFile(fout,"UglyDuckling.rtf"); 
+		System.out.println(fout);
+		//FileScanner.writeToFile(fout,"UglyDuckling.rtf"); 
 		
 	} 
 	
