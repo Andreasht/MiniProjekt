@@ -29,12 +29,12 @@ public class textEnhancer {
 	
 	public static String replace(String input) {
 		String out = "";
-		String[] r = {"hella","skrt","braat","blyat","maymay","xdddd"};
+		String[] r = {"TEST"};
 		String[] arr = input.split(" ");
 		
 		for(String s : arr) {
 			int i = (int) (Math.random()*r.length);
-			if(s.equals("\\bmeget\\b")) {
+			if(s.toLowerCase().matches("meget\\S") || s.toLowerCase().matches("meget")) {
 				s = r[i];
 			}
 			out += s + " "; 
@@ -46,7 +46,7 @@ public class textEnhancer {
 	public static void main(String[] args) {												
 		String input = FileScanner.readFromFile("UglyDuckling");					//set the filescanner.readfromfile method return value as the string input
 		String f = format(input);													//set a string as return value of the formatted input
-	//	System.out.println(f);
+		System.out.println(f);
 	//	String en = replace(f);
 	//	FileScanner.writeToFile(f,"UglyDuckling.rtf"); 							//write the enhanced string to a file
 	}
