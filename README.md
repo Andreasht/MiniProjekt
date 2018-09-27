@@ -10,5 +10,7 @@
 - [ ] Opgave 3
 
 Opgave 1 er helt færdig.
+
 Opgave 2's kode er sat op og funktionel, men mangler selve ordene der skal byttes om.
+
 Opgave 3 er ikke begyndt.

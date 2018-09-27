@@ -29,19 +29,28 @@ public class enhancerEngine {
 	}
 
 	public static String replace(String input) {									//this method replaces the chosen words (opg 2)
-		String out = "";															//init to not get nullpointerexc
-		String[] r = { "TEST2", "TEST3", "TEST4", "TEST5" };						//array to hold the replacers
-		String[] arr = input.split(" ");											//split up the input into words
-
-		for (String s : arr) {														//for each..
-			int i = (int) (Math.random() * r.length);								//init a random int defined on the length of the word array
-			if (s.matches("(\\W*)meget(\\W*)")) {									//if a word matches the regex... (regex here matches "meget", including any character(s) that is NOT a word)
-				s = s.replace("meget", r[i]);										//replace "meget" with a random word from the replacer array
+		String out = "";
+		String l = "";
+		String[] r = {"TEST"};							//array to hold the replacers
+		String[] lines = input.split("\n");											//split up the input into words
+		for (String line : lines) {
+			String[] words = line.split(" ");
+			
+			for (String word : words) {
+				int i = (int) (Math.random() * r.length);								//init a random int defined on the length of the word array
+				if (word.matches("(.*)ælling(.*)")) {									//if a word matches the regex... (regex here matches "meget", including any character(s) that is NOT a word)
+					word = word.replace("ælling","grisling");									//replace "meget" with a random word from the replacer array
+				} 
+				l += word + " ";
 			}
-			out += s + " ";															//join all the words together
-		}	
-		return out;																	//return the final replaced text																
-	}
+			
+			out += l + " ";
+		}		
+		
+		return out;																//join all the words together
+	}	
+																			//return the final replaced text																
+	
 	
 	public static String enhance(String input) {									//this method does the work, calls the methods
 		String fin = format(input);													//first, define a string as the formatted input
