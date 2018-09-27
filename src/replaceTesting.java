@@ -1,4 +1,4 @@
-
+@SuppressWarnings("unused")
 public class replaceTesting {
 	
 	public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class replaceTesting {
 		String pik = "meget";
 		for(String s : arr) {
 			int ir = (int) (Math.random()*r.length);
-			if(s.equals(pik)) {
+			if(s.toLowerCase().matches("meget\\S") || s.toLowerCase().matches("meget")) {
 				s = r[ir];
 			}
 			out += s + " ";

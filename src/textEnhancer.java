@@ -29,13 +29,13 @@ public class textEnhancer {
 	
 	public static String replace(String input) {
 		String out = "";
-		String[] r = {"TEST"};
+		String[] r = {"TEST2","TEST3","TEST4","TEST5"};
 		String[] arr = input.split(" ");
 		
 		for(String s : arr) {
 			int i = (int) (Math.random()*r.length);
-			if(s.toLowerCase().matches("meget\\S") || s.toLowerCase().matches("meget")) {
-				s = r[i];
+			if(s.matches("(.*)meget(.*)")) {
+				s = s.replace("meget", r[i]);
 			}
 			out += s + " "; 
 		}
