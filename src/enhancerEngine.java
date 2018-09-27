@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("unused")
-
-public class textEnhancer {
+//this file is the back-end enhancer, run it from the enhancer.java class
+public class enhancerEngine {
 
 	public static String format(String input) {
 																					// first, this part will split up the read file by every "."
@@ -24,37 +24,32 @@ public class textEnhancer {
 				b.insert(i + 1, " "); 												// use stringbuilder to insert a space
 			}
 		}
-		return b.toString();
+		return b.toString();														//return the final text as a string
 		
 	}
 
-	public static String replace(String input) {
-		String out = "";
-		String[] r = { "TEST2", "TEST3", "TEST4", "TEST5" };
-		String[] arr = input.split(" ");
+	public static String replace(String input) {									//this method replaces the chosen words (opg 2)
+		String out = "";															//init to not get nullpointerexc
+		String[] r = { "TEST2", "TEST3", "TEST4", "TEST5" };						//array to hold the replacers
+		String[] arr = input.split(" ");											//split up the input into words
 
-		for (String s : arr) {
-			int i = (int) (Math.random() * r.length);
-			if (s.matches("(.*)meget(.*)")) {
-				s = s.replace("meget", r[i]);
+		for (String s : arr) {														//for each..
+			int i = (int) (Math.random() * r.length);								//init a random int defined on the length of the word array
+			if (s.matches("(\\W*)meget(\\W*)")) {									//if a word matches the regex... (regex here matches "meget", including any character(s) that is NOT a word)
+				s = s.replace("meget", r[i]);										//replace "meget" with a random word from the replacer array
 			}
-			out += s + " ";
-		}
-		System.out.println(out);
-		return out;
+			out += s + " ";															//join all the words together
+		}	
+		return out;																	//return the final replaced text																
 	}
 	
-	public static String enhance(String input) {
-		String fin = format(input);
-		String enhanced = replace(fin);
-		return enhanced;
+	public static String enhance(String input) {									//this method does the work, calls the methods
+		String fin = format(input);													//first, define a string as the formatted input
+		String enhanced = replace(fin);												//then, define a string as the replace method, called on the formatted input
+		return enhanced;															//then return the completed, joined, enhanced text.
 	}
 
 	public static void main(String[] args) {
-		String input = FileScanner.readFromFile("UglyDuckling"); 					// set the filescanner.readfromfile method return value
-		String enhancedFinal = enhance(input);
-		System.out.println(enhancedFinal);
-		// FileScanner.writeToFile(f,"UglyDuckling.rtf"); //write the enhanced string to
-		// a file
+		//nothing to do here... everything runs from the enhancer.java class.
 	}
 }
