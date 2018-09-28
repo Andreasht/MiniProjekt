@@ -5,6 +5,6 @@ public class enhancer {
 		String input = FileScanner.readFromFile("UglyDuckling"); 					//set the filescanner.readfromfile method return value
 		String enhancedFinal = enhancerEngine.enhance(input);						//set the string enhancedFinal to equal the return value of the enhance method on the input
 		System.out.println(enhancedFinal);
-		FileScanner.writeToFile(enhancedFinal,"UglyDuckling.rtf"); 							//write the enhanced final
+	//	FileScanner.writeToFile(enhancedFinal,"UglyDuckling.rtf"); 							//write the enhanced final
 	}
 }

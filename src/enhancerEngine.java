@@ -30,32 +30,31 @@ public class enhancerEngine {
 
 	public static String replace(String input) {									//this method replaces the chosen words (opg 2)
 		String out = "";
-		String l = "";
-		String[] r = {"TEST"};							//array to hold the replacers
-		String[] lines = input.split("\n");											//split up the input into words
+		String test = "ælling";
+		String[][] multi = {{"Ælling","Grisling"},{"and","gris"}}; 														//array to hold the replacers
+		String var1 = multi[0][0];
+		String var2 = multi[0][1];
+		String[] lines = input.split("\n");											//split up the input into lines
 		for (String line : lines) {
 			String[] words = line.split(" ");
-			
-			for (String word : words) {
-				int i = (int) (Math.random() * r.length);								//init a random int defined on the length of the word array
-				if (word.matches("(.*)ælling(.*)")) {									//if a word matches the regex... (regex here matches "meget", including any character(s) that is NOT a word)
-					word = word.replace("ælling","grisling");									//replace "meget" with a random word from the replacer array
-				} 
-				l += word + " ";
-			}
-			
-			out += l + " ";
-		}		
-		
-		return out;																//join all the words together
+				for(String word : words) {
+					if(word.matches("(.*)"+var1.toLowerCase()+"(.*)")) {
+						word = word.replace(var1.toLowerCase(), var2.toLowerCase());
+					} else if(word.matches("(.*)"+var1+"(.*)")) {
+						word = word.replaceAll(var1, var2);
+					}
+					out += word + " ";
+				}
+			}		
+		return out;														
 	}	
-																			//return the final replaced text																
+																																		
 	
 	
-	public static String enhance(String input) {									//this method does the work, calls the methods
-		String fin = format(input);													//first, define a string as the formatted input
-		String enhanced = replace(fin);												//then, define a string as the replace method, called on the formatted input
-		return enhanced;															//then return the completed, joined, enhanced text.
+	public static String enhance(String input) {	
+		String replaced = replace(input);
+		String enhanced = format(replaced);									
+		return enhanced;															
 	}
 
 	public static void main(String[] args) {
