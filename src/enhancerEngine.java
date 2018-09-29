@@ -49,6 +49,10 @@ public class enhancerEngine {
 		return out;																							// return output-stringen												
 	}
 
+	public static void checkZipf(String input) {
+		// hjælp
+	}
+	
 	public static String enhance(String input) {															// Vores primære "runner" method. Det er denne, der skal calles
 		String replaced = replace(input);																	// Først, erstat ordene i indputtet
 		String enhanced = format(replaced);																	// Formater så den erstatte version

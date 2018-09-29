@@ -5,6 +5,6 @@ public class enhancer {
 		String input = FileScanner.readFromFile("UglyDuckling"); 					// Få inputtet fra readFromFile methoden
 		String enhancedFinal = enhancerEngine.enhance(input);						// set enhancedFinal stringen til at være lig med den enhancede version af inputtet
 		System.out.println(enhancedFinal);											// print den enhancede verison (for testing)
-	//	FileScanner.writeToFile(enhancedFinal,"UglyDuckling.rtf"); 					// skriv den enhancede version til en fil
+		FileScanner.writeToFile(enhancedFinal,"UglyDuckling.rtf"); 					// skriv den enhancede version til en fil
 	}
 }
