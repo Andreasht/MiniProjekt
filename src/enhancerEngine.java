@@ -50,7 +50,19 @@ public class enhancerEngine {
 	}
 
 	public static void checkZipf(String input) {
-		// hjælp
+		String out = "";
+		String[] lines = input.split("\n");																	// Split inputtet op i linjer (split ved hvert linjeskift)
+
+		for (String line : lines) {																			// for each loop, itererer over hver linje
+			String[] words = line.split(" ");
+			for (String word : words) {	
+				for (int i = 0; i < 10; i++) {														
+					if(word.equals(words[i])) {
+						System.out.println("DING");
+					}
+				}
+			}
+		}
 	}
 	
 	public static String enhance(String input) {															// Vores primære "runner" method. Det er denne, der skal calles
