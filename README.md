@@ -13,4 +13,4 @@ Opgave 1 er helt færdig.
 
 Opgave 2's kode er sat op og funktionel, men mangler selve ordene der skal byttes om.
 
-Opgave 3 er ikke begyndt.
+Opgave 3's kode er delvist sat op, lige nu kan den kun tælle alle ordene.

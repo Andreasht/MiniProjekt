@@ -20,7 +20,17 @@ public class zipfTesting {
 				}
 			}
 		}
-		System.out.println(hm);
+		hm.remove("");
+		ArrayList<Integer> occ = new ArrayList<Integer>(hm.size());
+		int i = 0;
+		for (int v : hm.values()) {
+			 occ.add(v);
+			i++;
+		}
+		for (int xd : occ) {
+			System.out.println(xd);
+		}
+		
 	} 
 	
 	
