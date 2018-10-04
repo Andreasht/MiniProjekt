@@ -54,27 +54,27 @@ public class enhancerEngine {
 		return out;																							// return output-stringen												
 	}
 
-	public static void checkZipf(String input) {
-		HashMap<String,Double> hm = new HashMap<String,Double>();
-		String[] words = input.split("\\b");
-			for(String word : words) {
-				word = word.toLowerCase();
-				if(word.matches("\\pL+")) {
-					if(!hm.containsKey(word)) {
-						hm.put(word, 1.0);
-					} else {
-						hm.put(word, hm.get(word)+1);
+	public static void checkZipf(String input) {															// Denne metode checker frekvenserne, så man kan sammenligne dem
+		HashMap<String,Double> hm = new HashMap<String,Double>();											// Dette HashMap indeholder en string og en double, hvilket er ordet og dens occurrence.
+		String[] words = input.split("\\b");																// Inputtet bliver så splittet ved hvert ord, regex her er et word boundary.													
+			for(String word : words) {																		// for each loop, itererer over alle ordene.
+				word = word.toLowerCase();																	// sætter ordet til at være lowercase
+				if(word.matches("\\pL+")) {																	// hvis ordet matcher et lowercase-ord.. (så tal osv bliver sorteret fra)
+					if(!hm.containsKey(word)) {																// checker først om hashmappet allerede indeholder ordet, hvis ikke...
+						hm.put(word, 1.0);																	// indsæt ordet med occurrence 1
+					} else {																				// hvis det findes i hm allerede
+						hm.put(word, hm.get(word)+1);														// sæt ordets occurrence 1 op.
 					}
 				}
 			}
-		hm.remove("");
-		DecimalFormat dec = new DecimalFormat("#0.00");
-		List<Double> list = new ArrayList<Double>(hm.values());
-		Collections.sort(list,Collections.reverseOrder());
-		for (Double j : list) {		
-			long occu = Math.round(j);
-			String freq = dec.format(j/list.get(0));
-			System.out.println(occu + " | " + freq);
+		hm.remove("");																						// fjern whitespace.. ved ikke hvordan ellers
+		DecimalFormat dec = new DecimalFormat("#0.00");														// lav en decimalformatter, så der kan afrundes senere. denne afrunder til 2 decimaler
+		List<Double> list = new ArrayList<Double>(hm.values());												// put alle hashmappets values ind i en arraylist med doubles
+		Collections.sort(list,Collections.reverseOrder());													// sorter alle tallene i arraylisten, omvendt (descending)
+		for (Double i : list) {																				// for each double i arraylisten..	
+			long occu = Math.round(i);																		// init en variabel til at være lig med ordets occurrence
+			String freq = dec.format(i/list.get(0));														// init en string til at være lig med ordets occurrence, divideret med det første (det mest fremkommende) ords occurence, afrundet 
+			System.out.println(occu + " | " + freq);														// print occurrence og frequence, sepereret med en |
 		}	
 	}
 	
