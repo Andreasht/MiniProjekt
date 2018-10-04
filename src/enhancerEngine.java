@@ -1,4 +1,9 @@
 import java.io.*;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("unused")
@@ -50,19 +55,27 @@ public class enhancerEngine {
 	}
 
 	public static void checkZipf(String input) {
-		String out = "";
-		String[] lines = input.split("\n");																	// Split inputtet op i linjer (split ved hvert linjeskift)
-
-		for (String line : lines) {																			// for each loop, itererer over hver linje
-			String[] words = line.split(" ");
-			for (String word : words) {	
-				for (int i = 0; i < 10; i++) {														
-					if(word.equals(words[i])) {
-						System.out.println("DING");
+		HashMap<String,Double> hm = new HashMap<String,Double>();
+		String[] words = input.split("\\b");
+			for(String word : words) {
+				word = word.toLowerCase();
+				if(word.matches("\\pL+")) {
+					if(!hm.containsKey(word)) {
+						hm.put(word, 1.0);
+					} else {
+						hm.put(word, hm.get(word)+1);
 					}
 				}
 			}
-		}
+		hm.remove("");
+		DecimalFormat dec = new DecimalFormat("#0.00");
+		List<Double> list = new ArrayList<Double>(hm.values());
+		Collections.sort(list,Collections.reverseOrder());
+		for (Double j : list) {		
+			long occu = Math.round(j);
+			String freq = dec.format(j/list.get(0));
+			System.out.println(occu + " | " + freq);
+		}	
 	}
 	
 	public static String enhance(String input) {															// Vores primære "runner" method. Det er denne, der skal calles

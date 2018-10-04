@@ -1,40 +1,36 @@
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class zipfTesting {
 	@SuppressWarnings("unused")
 	public static void checkZipf(String input) {
-		String out = "";
-		HashMap<String,Integer> hm = new HashMap<String,Integer>();
-		String[] lines = input.split("\n");
-		for(String l : lines) {
-			String[] words = l.split(" ");
+		HashMap<String,Double> hm = new HashMap<String,Double>();
+		String[] words = input.split("\\b");
 			for(String word : words) {
 				word = word.toLowerCase();
-				if(word.matches("(\\w*\\W+)")) {
-					word = word.replaceAll("\\W", "");
-				}
-				if(!hm.containsKey(word)) {
-					hm.put(word, 1);
-				} else {
-					hm.put(word, hm.get(word)+1);
+				if(word.matches("\\pL+")) {
+					if(!hm.containsKey(word)) {
+						hm.put(word, 1.0);
+					} else {
+						hm.put(word, hm.get(word)+1);
+					}
 				}
 			}
-		}
 		hm.remove("");
-		ArrayList<Integer> occ = new ArrayList<Integer>(hm.size());
-		int i = 0;
-		for (int v : hm.values()) {
-			 occ.add(v);
-			i++;
-		}
-		for (int xd : occ) {
-			System.out.println(xd);
-		}
-		
+		DecimalFormat dec = new DecimalFormat("#0.00");
+		List<Double> list = new ArrayList<Double>(hm.values());
+		Collections.sort(list,Collections.reverseOrder());
+		for (Double j : list) {		
+			long occu = Math.round(j);
+			String freq = dec.format(j/list.get(0));
+			System.out.println(occu + " | " + freq);
+		}	
 	} 
 	
 	
 	public static void main(String[] args) {
-		checkZipf(enhancerEngine.enhance(FileScanner.readFromFile("lorem")));
+		checkZipf(enhancerEngine.enhance(FileScanner.readFromFile("UglyDuckling")));
 	}
 }
+
+
