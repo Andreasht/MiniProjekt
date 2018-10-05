@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 // Denne fil er "back-enden", den skal k�res fra enhancer.java
+@SuppressWarnings("unused")
 public class enhancerEngine {
 	public static String format(String input) {
 		StringBuilder b = new StringBuilder(); 																// Formateringsmetoden. Først splitter den ved hvert punktum, og så sætter den et linjeskift ind
