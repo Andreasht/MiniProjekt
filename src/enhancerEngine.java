@@ -49,7 +49,7 @@ public class enhancerEngine {
 			for (String word : words) {																		// nyt for each loop, itererer over hvert ord.
 				for (int i = 0; i < r.length; i++) {														// nyt for loop..... bruges til at iterere over hvert ord i replacer-arrayet.
 
-					if (word.matches("(.*)" + r[i][0].toLowerCase() + "(.*)")) {							// Hvis ordet matcher det første ord i "i"-subarrayet, (i lowercase). RegEx (.*) betyder ethvert symbol der optræder mere end 0 gange
+					if (word.matches("(.*)" + r[i][0].toLowerCase() + "(.*)")) {							// Hvis ordet matcher det første ord i "i"-subarrayet, (i lowercase). RegEx (.*) betyder ethvert symbol der optræder 0 eller flere gange
 						word = word.replace(r[i][0].toLowerCase(), r[i][1].toLowerCase());					// erstat ordet med det næste ord i subarrayet (dens replacer)
 					} else if (word.matches("(.*)" + r[i][0] + "(.*)")) {									// ellers, hvis ordet matcher versionen af ordet som har stort forbogstav..
 						word = word.replace(r[i][0], r[i][1]);												// erstat ordet, med versionen der har stort forbogstav
