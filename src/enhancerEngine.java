@@ -6,8 +6,8 @@ import java.util.List;
 
 // Denne fil er "back-enden", den skal køres fra enhancer.java
 public class enhancerEngine {
-	public static String format(String input) {
-		StringBuilder b = new StringBuilder(); 																// Formateringsmetoden. Først splitter den ved hvert punktum, og så sætter den et linjeskift ind
+	public static String format(String input) {																// Formateringsmetoden. Først splitter den ved hvert punktum, og så sætter den et linjeskift ind
+		StringBuilder b = new StringBuilder(); 																// Initiere et StringBuilder objekt, der skal bruges senere
 		String[] arr = input.split("(?<=[.])");										   						// Split input-stringen efter hvert punktum (bruger en RegEx, ?<= der betyder "kig bag/look behind"
 		for (String s : arr) { 																				// Et for each loop
 			if (s.charAt(0) == ' ') { 																		// Hvis den første char er et space..
