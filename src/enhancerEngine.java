@@ -1,13 +1,10 @@
-import java.io.*;
-import java.text.DecimalFormat;
+import java.text.DecimalFormat;																				// Importerer alle de nødvendige classes
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Pattern;
 
 // Denne fil er "back-enden", den skal køres fra enhancer.java
-@SuppressWarnings("unused")
 public class enhancerEngine {
 	public static String format(String input) {
 		StringBuilder b = new StringBuilder(); 																// Formateringsmetoden. Først splitter den ved hvert punktum, og så sætter den et linjeskift ind
@@ -53,20 +50,20 @@ public class enhancerEngine {
 				for (int i = 0; i < r.length; i++) {														// nyt for loop..... bruges til at iterere over hvert ord i replacer-arrayet.
 
 					if (word.matches("(.*)" + r[i][0].toLowerCase() + "(.*)")) {							// Hvis ordet matcher det første ord i "i"-subarrayet, (i lowercase). RegEx (.*) betyder ethvert symbol der optræder mere end 0 gange
-						word = word.replace(r[i][0].toLowerCase(), r[i][1].toLowerCase());					// erstat ordet med det nyste ord i subarrayet (dens replacer)
+						word = word.replace(r[i][0].toLowerCase(), r[i][1].toLowerCase());					// erstat ordet med det næste ord i subarrayet (dens replacer)
 					} else if (word.matches("(.*)" + r[i][0] + "(.*)")) {									// ellers, hvis ordet matcher versionen af ordet som har stort forbogstav..
 						word = word.replace(r[i][0], r[i][1]);												// erstat ordet, med versionen der har stort forbogstav
 					}
 					
 				}
-				builder.append(word + " ");																	// Link alle ordene sammen i output-stringen
+				builder.append(word + " ");																	// Link alle ordene sammen i output-stringen, ved hjælp af StringBuilderen
 			}
 		}
-		return builder.toString();																			// return output-stringen
+		return builder.toString();																			// return output-stringen (StringBuilderen, lavet til en normal String)
 	}
 
 	public static void checkZipf(String input) {															// Denne metode checker frekvenserne, så man kan sammenligne dem
-		HashMap<String,Double> hm = new HashMap<String,Double>();											// Dette HashMap indeholder en string og en double, hvilket er ordet og dens occurrence.
+		HashMap<String,Double> hm = new HashMap<String,Double>();											// Dette HashMap indeholder en string som key og en double som value, hvilket er ordet og dens occurrence.
 		String[] words = input.split("\\b");																// Inputtet bliver så splittet ved hvert ord, regex her er et word boundary.
 			for(String word : words) {																		// for each loop, itererer over alle ordene.
 				word = word.toLowerCase();																	// sætter ordet til at være lowercase
@@ -77,8 +74,7 @@ public class enhancerEngine {
 						hm.put(word, hm.get(word)+1);														// sæt ordets occurrence 1 op.
 					}
 				}
-			}
-		hm.remove("");																						// fjern whitespace.. ved ikke hvordan ellers
+			}																			
 		DecimalFormat dec = new DecimalFormat("#0.00");														// lav en decimalformatter, så der kan afrundes senere. denne afrunder til 2 decimaler
 		List<Double> list = new ArrayList<Double>(hm.values());												// put alle hashmappets values ind i en arraylist med doubles
 		Collections.sort(list,Collections.reverseOrder());													// sorter alle tallene i arraylisten, omvendt (descending)
@@ -92,7 +88,7 @@ public class enhancerEngine {
 	
 	public static String enhance(String input) {															// Vores primære "runner" method. Det er denne, der skal calles
 		String replaced = replace(input);																	// Først, erstat ordene i indputtet
-		String enhanced = format(replaced);																	// Formater så den erstatte version
+		String enhanced = format(replaced);																	// Formater så den erstattede version
 		return enhanced;																					// Return den endelige forbedrede version
 	}
 
