@@ -17,7 +17,7 @@ public class enhancerEngine {
 		}
 																											// Denne del indsætter et mellemrum hvis der to citationstegn ved siden af hinanden ("Hej!""Hejsa"!)
 
-		for (int i = b.length() - 1; i >= 0; i--) { 														// For-løkke der tæller baglæns, ellers får vi problemer, da længden bliver ændret når vi tilføjer noget. i er length()-1, pga 0-indexing,. (hvis længden er 100, er max index 99)
+		for (int i = b.length() - 1; i >= 0; i--) { 														// For-løkke der tæller baglæns, ellers får vi problemer, da længden bliver ændret når vi tilføjer noget. i er length()-1, pga 0-indexing (hvis længden er 100, er max index 99)
 			if ((b.charAt(i) == '\"') && ((b.charAt(i + 1) == '\"'))) {										// hvis char at i OG char at i+1 = "...
 				b.insert(i + 1, " "); 																		// brug StringBuilder til at indsætte et mellemrum
 			}
@@ -27,7 +27,7 @@ public class enhancerEngine {
 	}
 
 	public static String replace(String input) { 															// Replacer-methoden. (opg 2)
-		StringBuilder builder = new StringBuilder();														// Samme som i format, NullPointerExc.
+		StringBuilder builder = new StringBuilder();														// Ny StringBuilder, bruges igen senere
 		String[][] r = { 																					// Dette er et 2-layered array, der indeholder ordene der skal replaces, og det, ordet skal replaces til.
 				{"Ælling", "Grisling"}, 
 				{"Stor", "Uhyre koloenorm"},
