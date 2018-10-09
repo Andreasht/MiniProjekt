@@ -2,3 +2,6 @@ bin
 out
 .idea
 /TheEnhanced*.rtf
+/.project
+/.classpath
+/MiniProjekt.iml
